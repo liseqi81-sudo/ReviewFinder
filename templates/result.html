@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>언어의 지문 - 분석 결과</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; padding: 40px; background-color: #f0f2f5; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        h1 { color: #1a73e8; text-align: center; border-bottom: 2px solid #1a73e8; padding-bottom: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+        th, td { padding: 15px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #f8f9fa; color: #555; font-weight: bold; }
+        .movie-title { font-weight: bold; color: #202124; font-size: 1.1em; }
+        .keyword-tag { background: #e8f0fe; color: #1967d2; padding: 4px 10px; border-radius: 12px; font-size: 0.9em; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
+        .btn-home { display: block; width: 150px; margin: 30px auto 0; text-align: center; padding: 12px; background: #1a73e8; color: white; text-decoration: none; border-radius: 5px; }
+        .btn-home:hover { background: #174ea6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 영화별 '언어의 지문' 분석 결과</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">영화 제목</th>
+                    <th style="width: 75%;">상위 핵심 키워드 (TF-IDF)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie, keywords in results.items() %}
+                <tr>
+                    <td class="movie-title">{{ movie }}</td>
+                    <td>
+                        {% for word in keywords %}
+                        <span class="keyword-tag">{{ word }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn-home">다시 분석하기</a>
+    </div>
+</body>
+</html>
